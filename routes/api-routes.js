@@ -2,7 +2,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -49,5 +49,34 @@ module.exports = function(app) {
         id: req.user.id
       });
     }
+  });
+
+  app.delete("/api/codes/:id", function (req, res) {
+    // We just have to specify which todo we want to destroy with "where"
+    db.Codes.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbCodes) {
+      res.json(dbCodes);
+    });
+  });
+  // PUT route for updating todos. We can get the updated todo data from req.body
+  app.put("/api/codes", function (req, res) {
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Codes.update({
+      snip: req.body.snip,
+      codeType: req.body.codeType,
+      public: req.body.public,
+      title: req.body.title,
+      tags: req.body.tags,
+    }, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function (dbCodes) {
+      res.json(dbCodes);
+    });
   });
 };

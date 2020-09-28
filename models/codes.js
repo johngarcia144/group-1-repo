@@ -20,6 +20,10 @@ module.exports = function(sequelize, DataTypes) {
     title: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    snip: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
   return Codes;
