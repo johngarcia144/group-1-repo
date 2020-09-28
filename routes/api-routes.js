@@ -51,31 +51,34 @@ module.exports = function (app) {
     }
   });
 
-  app.delete("/api/codes/:id", function (req, res) {
+  app.delete("/api/codes/:id", (req, res) => {
     // We just have to specify which todo we want to destroy with "where"
     db.Codes.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function (dbCodes) {
+    }).then(dbCodes => {
       res.json(dbCodes);
     });
   });
   // PUT route for updating todos. We can get the updated todo data from req.body
-  app.put("/api/codes", function (req, res) {
+  app.put("/api/codes", (req, res) => {
     // Update takes in an object describing the properties we want to update, and
     // we use where to describe which objects we want to update
-    db.Codes.update({
-      snip: req.body.snip,
-      codeType: req.body.codeType,
-      public: req.body.public,
-      title: req.body.title,
-      tags: req.body.tags,
-    }, {
-      where: {
-        id: req.body.id
+    db.Codes.update(
+      {
+        snip: req.body.snip,
+        codeType: req.body.codeType,
+        public: req.body.public,
+        title: req.body.title,
+        tags: req.body.tags
+      },
+      {
+        where: {
+          id: req.body.id
+        }
       }
-    }).then(function (dbCodes) {
+    ).then(dbCodes => {
       res.json(dbCodes);
     });
   });
