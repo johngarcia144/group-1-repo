@@ -2,7 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
   const Codes = sequelize.define("Codes", {
     userId: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     codeType: {
