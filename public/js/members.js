@@ -3,10 +3,6 @@ $(document).ready(() => {
   // and updates the HTML on the page
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.username);
-
-
-
-
   });
 
 
@@ -33,8 +29,11 @@ $(document).ready(() => {
       tags: $("#addKeywords").val().trim(),
       public: $("#privateSelect").val().trim()
     };
-    console.log(Code);
+
     //add post api here
+    $.get("/api/codes/", () => {}).then(dbCodes => {
+      console.log(dbCodes);
+    });
   });
 
   //searches database for language and keyword
@@ -42,10 +41,9 @@ $(document).ready(() => {
     event.preventDefault();
     const searchParams = {
       codeType: $("#languageSearch").val(),
-      tags: $("#searchtag").val().trim()
+      keywords: $("#searchtag").val().trim()
     };
     console.log(searchParams);
     //add get api here
   });
-
 });
