@@ -1,15 +1,13 @@
-
-
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <img class="navbar-brand" src="https://img.icons8.com/pastel-glyph/64/000000/source-code--v3.png"/>
+      <img class="navbar-brand" src="https://img.icons8.com/pastel-glyph/64/000000/source-code--v3.png" />
       <a class="navbar-brand">QC</a>
-      
-     </div>
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
+
+    </div>
+    <a class="navbar-brand" href="/logout">
+      Logout
+    </a>
   </div>
 </nav>
 
@@ -18,9 +16,9 @@
     <div class="col-md-6 col-md-offset-3">
       <h2>Welcome <span class="member-name"></span></h2>
     </div>
-    </div>
-    <div class="row">
-      {{!-- aside --}}
+  </div>
+  <div class="row">
+    {{!-- aside --}}
     <aside class="col-md-3">
 
       <div class="card recentview">
@@ -33,14 +31,17 @@
       <!-- bio/mission section -->
 
       <div class="card mb-3 border-0 bg-light mainform">
-            <div id="parent">
-              <div id="editor"></div>
-            </div>
+        <div id="parent">
+          <div id="editor"></div>
+        </div>
 
-      
+
 
         <div class="card-body">
-
+          <div class="form-group mr-3 ml-3 mt-2">
+            <label for="formGroupExampleInput2">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Code Title">
+          </div>
 
           <div class="form-group" id="languageSelect">
             <label for="exampleFormControlSelect1">Select a Language</label>
