@@ -21,19 +21,30 @@ $(document).ready(() => {
     let mode = $("#languageSelect").val()
     editor.session.setMode(`ace/mode/${mode}`);
     console.log("toggle");
-
   });
 
   //captures inputs for new code
   $("#savecode").on("click", event => {
     event.preventDefault();
     const Code = {
-      // Save the book they typed into the book-search input
       snip: editor.getValue(),
       codeType: $("#languageSelect").val(),
       title: $("#title").val().trim(),
-      tags: $("#tags").val().trim()
+      tags: $("#addKeywords").val().trim(),
+      public: $("#privateSelect").val().trim()
     };
     console.log(Code);
+    //add post api here
+  });
+
+  //searches database for language and keyword
+  $("#searchcode").on("click", event => {
+    event.preventDefault();
+    const searchParams = {
+      codeType: $("#languageSearch").val(),
+      tags: $("#searchtag").val().trim()
+    };
+    console.log(searchParams);
+    //add get api here
   });
 });

@@ -87,7 +87,7 @@ module.exports = function(app) {
         codeType: req.body.codeType,
         public: req.body.public,
         title: req.body.title,
-        tags: req.body.tags
+        keywords: req.body.keywords
       },
       {
         where: {
