@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    tags: {
+    keywords: {
       type: DataTypes.STRING,
       allowNull: false
     },
