@@ -15,6 +15,7 @@ $(document).ready(() => {
   editor.session.setMode("ace/mode/xml");
   editor.session.setUseSoftTabs(true);
 
+  //toggles mode
   $("#languageSelect").on("change", event =>{
     event.preventDefault();
     let mode = $("#languageSelect").val()
@@ -23,6 +24,7 @@ $(document).ready(() => {
 
   });
 
+  //captures inputs for new code
   $("#savecode").on("click", event => {
     event.preventDefault();
     const Code = {
