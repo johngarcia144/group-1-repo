@@ -4,3 +4,9 @@ $(document).ready(() => {
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.email);
   });
+
+var editor = ace.edit("editor");
+editor.setTheme("ace/theme/tomorrow_night");
+editor.session.setMode("ace/mode/xml");
+editor.session.setUseSoftTabs(true);  
+});

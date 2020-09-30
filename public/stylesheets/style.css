@@ -5,3 +5,18 @@ form.login {
 body{
   background-color: gray;
 }
+
+
+#parent {
+    width:35%;
+    height: 420px;
+    display:inline-block;
+    position:relative;
+}
+#editor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
