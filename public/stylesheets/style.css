@@ -46,4 +46,21 @@ border-radius: 10px;
   border-radius: 15px;
   padding: 20px;
 }
+h2, p {
+  color: black;
+  font-family: Helvetica;
+}
+
+.login-box {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+label {
+  color: black;
+  font-family: Helvetica;
+}
+
 
