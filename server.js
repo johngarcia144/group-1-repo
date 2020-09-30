@@ -5,6 +5,7 @@ const exphbs = require("express-handlebars");
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
 
+
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
 const db = require("./models");
