@@ -85,4 +85,27 @@ module.exports = function(app) {
       res.json(dbCodes);
     });
   });
+
+  app.get("/api/codes", (req, res) => {
+    db.Codes.getAll({
+      snip: req.body.snip,
+      codeType: req.body.codeType,
+      public: req.body.public,
+      title: req.body.title,
+      tags: req.body.tags
+    }).then(dbCodes => {
+      
+    })
+  })
+  app.post("/api/codes/:snip", (req, res) => {
+    db.Codes.create({
+      snip: req.body.snip,
+      codeType: req.body.codeType,
+      public: req.body.public,
+      title: req.body.title,
+      tags: req.body.tags
+    }).then(dbCodes => {
+      res.json(dbCodes);
+    });
+  });
 };
