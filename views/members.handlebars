@@ -20,8 +20,10 @@
     </div>
     </div>
     <div class="row">
+      {{!-- aside --}}
     <aside class="col-md-3">
-      <div class="card mb-3 border-0 bg-light">
+
+      <div class="card recentview">
         <div class="card-body">
           <h5 class="card-title">Recently Viewed Code</h5>
         </div>
@@ -29,10 +31,14 @@
     </aside>
     <article class="col-md-6">
       <!-- bio/mission section -->
-      <div class="card mb-3 border-0 bg-light">
+
+      <div class="card mb-3 border-0 bg-light mainform">
             <div id="parent">
               <div id="editor"></div>
             </div>
+
+      
+
         <div class="card-body">
 
 
@@ -52,11 +58,11 @@
             <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="object, loop, card, etc">
           </div>
 
-          <button type="submit" class="btn btn-info ml-3 mb-4">Save to your Library</button>
+          <button type="submit" class="btn">Save to your Library</button>
         </div>
       </div>
     </article>
-    <aside class="col-md-3">
+    <aside class="col-md-3 codesearch">
       <div class="card mb-3 border-0 bg-light">
         <div class="card-body">
           <h5 class="card-title">Code Search</h5>
@@ -73,7 +79,7 @@
             <label for="formGroupExampleInput2">Keyword</label>
             <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="object, loop, card, etc">
           </div>
-          <button type="submit" class="btn btn-info ml-3 mb-4">Get some code</button>
+          <button type="submit" class="btn">Get some code</button>
         </form>
       </div>
     </aside>
