@@ -7,65 +7,71 @@
     </div>
   </div>
 </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="member-name"></span></h2>
-      </div>
-      <article class="col-md-6">
-                <!-- bio/mission section -->
-                <div class="card mb-3 border-0 bg-light">
-                    <textarea class="mirror m-4" id="editor">
-                    </textarea>
-                    <div class="card-body">
-                
-                        
-                        <div class="form-group"id="languageSelect">
-                            <label for="exampleFormControlSelect1">Select a Language</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                              <option value="htmlembedded">HTML</option>
-                              <option value="css">CSS</option>
-                              <option value="handlebars">Handlebars</option>
-                              <option value="javascript">JavaScript</option>
-                              <option value="markdown">Markdown</option>
-                              <option value="sql">SQL</option>
-                            </select>
-                        </div>  
-                        <div class="form-group mr-3 ml-3 mt-2">
-                            <label for="formGroupExampleInput2">Edit Keywords</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput2"
-                                placeholder="object, loop, card, etc">
-                        </div>
-
-                        <button type="submit" class="btn btn-info ml-3 mb-4">Save to your Library</button>
-                    </div>
-                </div>
-            </article>
-            <aside class="col-md-3">
-                <div class="card mb-3 border-0 bg-light">
-                    <div class="card-body">
-                        <h5 class="card-title">Code Search</h5>
-                        <p class="card-text">Use the fields below to search for existing public code or code from your
-                            own library.</p>
-                    </div>
-                    <form>
-                        <div class="form-group mr-3 ml-3">
-                            <label for="formGroupExampleInput">Language</label>
-                            <input type="text" class="form-control form-control-sm" id="formGroupExampleInput"
-                                placeholder="HTML, CSS, JavaScript, SQL, etc">
-                        </div>
-                        <div class="form-group mr-3 ml-3">
-                            <label for="formGroupExampleInput2">Keyword</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput2"
-                                placeholder="object, loop, card, etc">
-                        </div>
-                        <button type="submit" class="btn btn-info ml-3 mb-4">Get some code</button>
-                    </form>
-                </div>
-            </aside>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h2>Welcome <span class="member-name"></span></h2>
     </div>
-  </div>
+    </div>
+    <div class="row">
+    <aside class="col-md-3">
+      <div class="card mb-3 border-0 bg-light">
+        <div class="card-body">
+          <h5 class="card-title">Recently Viewed Code</h5>
+        </div>
+      </div>
+    </aside>
+    <article class="col-md-6">
+      <!-- bio/mission section -->
+      <div class="card mb-3 border-0 bg-light">
+        <textarea class="mirror m-4" id="editor">
+                    </textarea>
+        <div class="card-body">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/members.js"></script>
-  
+
+          <div class="form-group" id="languageSelect">
+            <label for="exampleFormControlSelect1">Select a Language</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option value="htmlembedded">HTML</option>
+              <option value="css">CSS</option>
+              <option value="handlebars">Handlebars</option>
+              <option value="javascript">JavaScript</option>
+              <option value="markdown">Markdown</option>
+              <option value="sql">SQL</option>
+            </select>
+          </div>
+          <div class="form-group mr-3 ml-3 mt-2">
+            <label for="formGroupExampleInput2">Edit Keywords</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="object, loop, card, etc">
+          </div>
+
+          <button type="submit" class="btn btn-info ml-3 mb-4">Save to your Library</button>
+        </div>
+      </div>
+    </article>
+    <aside class="col-md-3">
+      <div class="card mb-3 border-0 bg-light">
+        <div class="card-body">
+          <h5 class="card-title">Code Search</h5>
+          <p class="card-text">Use the fields below to search for existing public code or code from your
+            own library.</p>
+        </div>
+        <form>
+          <div class="form-group mr-3 ml-3">
+            <label for="formGroupExampleInput">Language</label>
+            <input type="text" class="form-control form-control-sm" id="formGroupExampleInput"
+              placeholder="HTML, CSS, JavaScript, SQL, etc">
+          </div>
+          <div class="form-group mr-3 ml-3">
+            <label for="formGroupExampleInput2">Keyword</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="object, loop, card, etc">
+          </div>
+          <button type="submit" class="btn btn-info ml-3 mb-4">Get some code</button>
+        </form>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/members.js"></script>
