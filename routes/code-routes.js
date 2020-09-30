@@ -1,5 +1,7 @@
+const db = require("../models");
+
 module.exports = function (app) {
-    const db = require("../models");
+    
     //route for adding code snips to DB.
   app.get("/api/codes/:snip", (req, res) => {
     db.Codes.create({
@@ -14,7 +16,7 @@ module.exports = function (app) {
   });
 
 
-  app.get("/api/codes/:keywords", (req, res) => {
+  app.get("/api/codes/search/:keywords", (req, res) => {
     db.Codes.findAll({
       where: {
         keywords: req.params.keywords
