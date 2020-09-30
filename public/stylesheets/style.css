@@ -26,23 +26,23 @@ color: darkgray;
 border-color: #93E9BE;
 border-radius: 10px;
 }
-.recentview{
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 15px;
-  padding: 20px;
+
+
+h2, p {
+  color: black;
+  font-family: Helvetica;
 }
-.codesearch{
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 15px;
-  padding: 20px;
+
+label {
+  color: black;
+  font-family: Helvetica;
 }
-.mainform{
+
+.login-box {
   background-color: white;
-  border: 1px solid black;
   border-radius: 15px;
   padding: 20px;
+
 }
 
 h2, p {
@@ -60,4 +60,5 @@ h2, p {
 label {
   color: black;
   font-family: Helvetica;
+
 }
