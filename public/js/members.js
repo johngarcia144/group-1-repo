@@ -4,6 +4,7 @@ $(document).ready(() => {
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.username);
   });
+<<<<<<< HEAD
 
 
   let editor = ace.edit("editor");
@@ -46,4 +47,6 @@ $(document).ready(() => {
     console.log(searchParams);
     //add get api here
   });
+=======
+>>>>>>> de05ae288d4463f3426d77cf5cbeefcb30063d7c
 });
