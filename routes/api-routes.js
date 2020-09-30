@@ -54,6 +54,19 @@ module.exports = function(app) {
     }
   });
 
+  //route for adding code snips to DB.
+  app.get("/api/codes/:snip", (req, res) => {
+    db.Codes.create({
+      snip: req.body.snip,
+      codeType: req.body.codeType,
+      public: req.body.public,
+      title: req.body.title,
+      keywords: req.body.keywords
+    }).then(dbCodes => {
+      res.json(dbCodes);
+    });
+  });
+
   app.delete("/api/codes/:id", (req, res) => {
     // We just have to specify which todo we want to destroy with "where"
     db.Codes.destroy({
