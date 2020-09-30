@@ -5,3 +5,9 @@ form.login {
 body{
   background-color: gray;
 }
+.btn{
+background-color: #93E9BE;
+color: darkgray;
+border-color: #93E9BE;
+border-radius: 10px;
+}
