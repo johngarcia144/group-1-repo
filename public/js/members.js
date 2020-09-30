@@ -6,6 +6,7 @@ $(document).ready(() => {
 
 
 
+
   });
 
 
@@ -19,6 +20,7 @@ $(document).ready(() => {
     let mode = $("#languageSelect").val()
     editor.session.setMode(`ace/mode/${mode}`);
     console.log("toggle");
+
   });
 
   $("#savecode").on("click", event => {
