@@ -6,6 +6,8 @@ body{
   background-color: gray;
 }
 
+
+
 #parent {
     width:100%;
     height: 420px;
@@ -26,20 +28,22 @@ color: darkgray;
 border-color: #93E9BE;
 border-radius: 10px;
 }
-
-
-h2, p {
-  color: black;
-  font-family: Helvetica;
-}
-
-label {
-  color: black;
-  font-family: Helvetica;
-}
-
-.login-box {
+.recentview{
   background-color: white;
+  border: 1px solid black;
   border-radius: 15px;
   padding: 20px;
 }
+.codesearch{
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 20px;
+}
+.mainform{
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 20px;
+}
+
