@@ -17,23 +17,23 @@ $(document).ready(() => {
     const publicStr = $("#privateSelect").val();
     console.log("click");
     $.get("/api/user_data").then(data => {
-       const Code = {
-      userId:data.id,
-      snip: editor.getValue(),
-      codeType: $("#languageSelect").val(),
-      title: $("#title")
-        .val()
-        .trim(),
-      keywords: $("#addKeywords")
-        .val()
-        .trim(),
-      public: parseInt(publicStr)
-    };
-submitcode(Code);
+      const Code = {
+        userId: data.id,
+        snip: editor.getValue(),
+        codeType: $("#languageSelect").val(),
+        title: $("#title")
+          .val()
+          .trim(),
+        keywords: $("#addKeywords")
+          .val()
+          .trim(),
+        public: parseInt(publicStr)
+      };
+      submitcode(Code);
     });
   });
-  function submitcode(newcode){
-        $.post("/api/codes/new/", newcode).then(data => {
+  function submitcode(newcode) {
+    $.post("/api/codes/new/", newcode).then(data => {
       console.log(data);
     });
   }
