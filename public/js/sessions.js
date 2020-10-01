@@ -1,10 +1,9 @@
 $(document).ready(() => {
-
-    //sets code editor in place 
-    let editor = ace.edit("editor");
-    editor.setTheme("ace/theme/tomorrow_night");
-    editor.session.setMode("ace/mode/xml");
-    editor.session.setUseSoftTabs(true);
+ //sets code editor in place 
+  let editor = ace.edit("editor");
+  editor.setTheme("ace/theme/tomorrow_night");
+  editor.session.setMode("ace/mode/xml");
+  editor.session.setUseSoftTabs(true);
 
     //toggles code editor mode
     $("#languageSelect").on("change", event => {
@@ -35,7 +34,9 @@ $(document).ready(() => {
             codeType: $("#languageSearch").val(),
             keywords: $("#searchtag").val().trim()
         };
-        $.get(`/api/codes/search/${searchParams.keywords}`)
+
+        $.get(`/api/codes/${searchParams.keywords}`, searchParams)
+
             // on success, run this callback
             .then(searchParams => {
                 // log the data we found
