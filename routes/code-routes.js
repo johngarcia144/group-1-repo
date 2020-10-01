@@ -5,6 +5,7 @@ module.exports = app => {
 
   app.post("/api/codes/new", (req, res) => {
     db.Codes.create({
+      userId: req.body.userId,
       snip: req.body.snip,
       codeType: req.body.codeType,
       public: req.body.public,

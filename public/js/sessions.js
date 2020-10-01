@@ -16,7 +16,9 @@ $(document).ready(() => {
     event.preventDefault();
     const publicStr = $("#privateSelect").val();
     console.log("click");
-    const Code = {
+    $.get("/api/user_data").then(data => {
+       const Code = {
+      userId:data.id,
       snip: editor.getValue(),
       codeType: $("#languageSelect").val(),
       title: $("#title")
@@ -27,10 +29,14 @@ $(document).ready(() => {
         .trim(),
       public: parseInt(publicStr)
     };
-    $.post("/api/new/", Code).then(data => {
-      console.log(data);
+submitcode(Code);
     });
   });
+  function submitcode(newcode){
+        $.post("/api/codes/new/", newcode).then(data => {
+      console.log(data);
+    });
+  }
 
   //searches database for language and keyword
   $("#searchcode").on("click", event => {
