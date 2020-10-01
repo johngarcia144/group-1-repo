@@ -4,8 +4,6 @@ $(document).ready(() => {
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.username);
   });
-<<<<<<< HEAD
-
 
   let editor = ace.edit("editor");
   editor.setTheme("ace/theme/tomorrow_night");
@@ -32,7 +30,8 @@ $(document).ready(() => {
     };
 
     //add post api here
-    $.get("/api/codes/", () => {}).then(dbCodes => {
+    $.get("/api/codes/", (Code) => {}).then(dbCodes => {
+      Code = dbCodes;
       console.log(dbCodes);
     });
   });
@@ -47,6 +46,4 @@ $(document).ready(() => {
     console.log(searchParams);
     //add get api here
   });
-=======
->>>>>>> de05ae288d4463f3426d77cf5cbeefcb30063d7c
 });
