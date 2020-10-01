@@ -1,5 +1,15 @@
 $(document).ready(() => {
-  
+  let editor = ace.edit("editor");
+  editor.setTheme("ace/theme/tomorrow_night");
+  editor.session.setMode("ace/mode/xml");
+  editor.session.setUseSoftTabs(true);
+  //toggles mode
+  $("#languageSelect").on("change", event =>{
+    event.preventDefault();
+    let mode = $("#languageSelect").val()
+    editor.session.setMode(`ace/mode/${mode}`);
+    console.log("toggle");
+});
 
 //captures inputs for new code
   $("#savecode").on("click", event => {
