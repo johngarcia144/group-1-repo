@@ -15,15 +15,18 @@ module.exports = function (app) {
     res.status(204);
   });
 
+
   app.get("/api/codes/search/:keywords", (req, res) => {
     db.Codes.findAll({
       where: {
         keywords: req.params.keywords
       }
-    }).then(dbCodes => {
-      res.json(dbCodes);
+    }).then(results => {
+        
+      res.render("members", results);
     });
   });
+
 
   app.delete("/api/codes/:id", (req, res) => {
     // We just have to specify which todo we want to destroy with "where"
