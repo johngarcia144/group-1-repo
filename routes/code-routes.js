@@ -1,7 +1,6 @@
 const db = require("../models");
 
-module.exports = function (app) {
-
+module.exports = app => {
   //route for adding code snips to DB.
 
   app.post("/api/codes/new", (req, res) => {
@@ -15,18 +14,15 @@ module.exports = function (app) {
     res.status(204);
   });
 
-
   app.get("/api/codes/search/:keywords", (req, res) => {
     db.Codes.findAll({
       where: {
         keywords: req.params.keywords
       }
-    }).then(results => {
-        
-      res.render("members", results);
+    }).then(dbCodes => {
+      res.json(dbCodes);
     });
   });
-
 
   app.delete("/api/codes/:id", (req, res) => {
     // We just have to specify which todo we want to destroy with "where"
