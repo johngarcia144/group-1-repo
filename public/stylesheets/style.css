@@ -3,9 +3,11 @@ form.login {
   margin-top: 50px;
 }
 body{
-  background-color: gray;
+background-image:url(../assets/binary-2957504_1280.jpg);
 }
-
+.member-name{
+  color:whitesmoke
+}
 
 
 #parent {
