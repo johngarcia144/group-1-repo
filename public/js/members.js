@@ -17,33 +17,4 @@ $(document).ready(() => {
     editor.session.setMode(`ace/mode/${mode}`);
     console.log("toggle");
   });
-
-  //captures inputs for new code
-  $("#savecode").on("click", event => {
-    event.preventDefault();
-    const Code = {
-      snip: editor.getValue(),
-      codeType: $("#languageSelect").val(),
-      title: $("#title").val().trim(),
-      tags: $("#addKeywords").val().trim(),
-      public: $("#privateSelect").val().trim()
-    };
-
-    //add post api here
-    $.get("/api/codes/", (Code) => {}).then(dbCodes => {
-      Code = dbCodes;
-      console.log(dbCodes);
-    });
-  });
-
-  //searches database for language and keyword
-  $("#searchcode").on("click", event => {
-    event.preventDefault();
-    const searchParams = {
-      codeType: $("#languageSearch").val(),
-      keywords: $("#searchtag").val().trim()
-    };
-    console.log(searchParams);
-    //add get api here
-  });
 });

@@ -2,30 +2,27 @@ const db = require("../models");
 
 module.exports = function (app) {
 
-
   //route for adding code snips to DB.
 
-  app.get("/api/codes/:snip", (req, res) => {
+  app.post("/api/codes/new", (req, res) => {
     db.Codes.create({
       snip: req.body.snip,
       codeType: req.body.codeType,
       public: req.body.public,
       title: req.body.title,
       keywords: req.body.keywords
-    }).then(dbCodes => {
-      res.json(dbCodes);
     });
+    res.status(204);
   });
 
-
-  app.get("/api/codes/:keywords", (req, res) => {
-
+  app.get("/api/codes/search/:keywords", (req, res) => {
     db.Codes.findAll({
       where: {
         keywords: req.params.keywords
       }
-    }).then(dbCodes => {
-      res.json(dbCodes);
+    }).then(results => {
+        
+      res.render("members", results);
     });
   });
 
