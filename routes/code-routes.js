@@ -20,9 +20,8 @@ module.exports = function (app) {
       where: {
         keywords: req.params.keywords
       }
-    }).then(results => {
-        
-      res.render("members", results);
+    }).then(dbCodes => {
+      res.json(dbCodes);
     });
   });
 

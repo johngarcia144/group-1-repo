@@ -26,7 +26,7 @@ $(document).ready(() => {
             keywords: $("#searchtag").val().trim()
         };
 
-        $.get(`/api/codes/search/:keywords`, searchParams)
+        $.get(`/api/codes/search/${searchParams.keywords}`)
 
             // on success, run this callback
             .then(searchParams => {
