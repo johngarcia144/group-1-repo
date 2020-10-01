@@ -34,7 +34,9 @@ $(document).ready(() => {
             codeType: $("#languageSearch").val(),
             keywords: $("#searchtag").val().trim()
         };
+
         $.get(`/api/codes/${searchParams.keywords}`, searchParams)
+
             // on success, run this callback
             .then(searchParams => {
                 // log the data we found
