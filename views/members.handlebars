@@ -23,7 +23,17 @@
 
       <div class="card recentview">
         <div class="card-body">
-          <h5 class="card-title">Recently Viewed Code</h5>
+          <h5 class="card-title">Your Code</h5>
+            <select class="form-control" id="personalfilter">
+              <option value="htmlembedded">HTML</option>
+              <option value="css">CSS</option>
+              <option value="handlebars">Handlebars</option>
+              <option value="javascript">JavaScript</option>
+              <option value="markdown">Markdown</option>
+              <option value="sql">SQL</option>
+              <option value="all">All Code</option>
+            </select>
+          <div id="personalcontainer"></div>
         </div>
       </div>
     </aside>
