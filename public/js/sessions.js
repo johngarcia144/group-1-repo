@@ -57,13 +57,20 @@ $(document).ready(() => {
         $("#searchResults").empty();
         for (let i = 0; i < response.length; i++) {
           const a = $(
-            "<button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default btn-block'>"
+            "<br><button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default btn-block'>"
           );
           a.addClass("snips");
           a.attr("id", response[i].id);
           a.text(response[i].title);
           $("#searchResults").prepend(a);
         }
+        $("#searchResults").on("click", e => {
+          for (let j = 0; j < response.length; j++) {
+            e.preventDefault();
+            const codeSnip = response[j].snip;
+            editor.setValue(codeSnip);
+          }
+        });
       });
   });
 });
