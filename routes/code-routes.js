@@ -26,7 +26,7 @@ module.exports = app => {
   });
 
   app.get("/api/user/search/:userId", (req, res) => {
-    console.log(req.params.userId)
+    console.log(req.params.userId);
     db.Codes.findAll({
       where: {
         userId: req.params.userId
