@@ -25,6 +25,17 @@ module.exports = app => {
     });
   });
 
+  app.get("/api/user/search/:userId", (req, res) => {
+    console.log(req.params.userId)
+    db.Codes.findAll({
+      where: {
+        userId: req.params.userId
+      }
+    }).then(dbCodes => {
+      res.json(dbCodes);
+    });
+  });
+
   app.delete("/api/codes/:id", (req, res) => {
     // We just have to specify which todo we want to destroy with "where"
     db.Codes.destroy({
