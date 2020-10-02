@@ -3,8 +3,10 @@ form.login {
   margin-top: 50px;
 }
 body{
-background-image:url(../assets/binary-2957504_1280.jpg);
-background-repeat: no-repeat;
+  background-image: url(../assets/binary-background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .member-name{
   color:whitesmoke
