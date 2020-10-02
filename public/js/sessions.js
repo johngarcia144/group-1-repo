@@ -52,7 +52,7 @@ $(document).ready(() => {
       // on success, run this callback
       .then(searchParams => {
         // log the data we found
-        console.log(searchParams);
+        location.reload();
       });
   });
 });
