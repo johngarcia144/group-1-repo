@@ -65,10 +65,14 @@ $(document).ready(() => {
           $("#searchResults").prepend(a);
         }
         $("#searchResults").on("click", e => {
+          console.log(e.target.id)
+          e.preventDefault();
           for (let j = 0; j < response.length; j++) {
-            e.preventDefault();
+            console.log(response[j].id)
+            if(e.target.id == response[j].id){
             const codeSnip = response[j].snip;
             editor.setValue(codeSnip);
+          }
           }
         });
       });
