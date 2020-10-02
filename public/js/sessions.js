@@ -1,4 +1,9 @@
+let u;
 $(document).ready(() => {
+  $.get("/api/user_data").then(data => {
+    u=data.id
+  });
+
   const editor = ace.edit("editor");
   editor.setTheme("ace/theme/tomorrow_night");
   editor.session.setMode("ace/mode/xml");
@@ -56,6 +61,7 @@ $(document).ready(() => {
         // log the data we found
         $("#searchResults").empty();
         for (let i = 0; i < response.length; i++) {
+          if(response[i].public == 1){
           const a = $(
             "<br><button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default btn-block'>"
           );
@@ -63,6 +69,7 @@ $(document).ready(() => {
           a.attr("id", response[i].id);
           a.text(response[i].title);
           $("#searchResults").prepend(a);
+        }
         }
         $("#searchResults").on("click", e => {
           console.log(e.target.id)
@@ -77,4 +84,45 @@ $(document).ready(() => {
         });
       });
   });
+
+  $(".personalbtn").on("click", event => {
+    event.preventDefault();
+    console.log("click");
+    const searchParams = {
+      userId: u,
+      codeType: $("#personalfilter").val().trim()
+    };
+    console.log(searchParams)
+    $.get(`/api/user/search/${searchParams.userId}`)
+      // on success, run this callback
+      .then(response => {
+        console.log("thing", response);
+        // log the data we found
+        $("#personalcontainer").empty();
+        for (let i = 0; i < response.length; i++) {
+          if(response[i].codeType=== searchParams.codeType){
+              const a = $(
+            "<br><button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default btn-block'>"
+          );
+          a.addClass("snips");
+          a.attr("id", response[i].id);
+          a.text(response[i].title);
+          $("#personalcontainer").prepend(a);
+          }
+        
+        }
+        $("#personalcontainer").on("click", e => {
+          console.log(e.target.id)
+          e.preventDefault();
+          for (let j = 0; j < response.length; j++) {
+            console.log(response[j].id)
+            if(e.target.id == response[j].id){
+            const codeSnip = response[j].snip;
+            editor.setValue(codeSnip);
+          }
+          }
+        });
+      });
+  });
+
 });
