@@ -61,7 +61,7 @@ $(document).ready(() => {
         // log the data we found
         $("#searchResults").empty();
         for (let i = 0; i < response.length; i++) {
-          if (response[i].public == 1) {
+          if (response[i].public == 1 && response[i].codeType === searchParams.codeType) {
             const a = $(
               "<br><button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default btn-block'>"
             );
