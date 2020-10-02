@@ -79,6 +79,17 @@ $(document).ready(() => {
             if (e.target.id == response[j].id) {
               const codeSnip = response[j].snip;
               editor.setValue(codeSnip);
+              $("#languageSelect").val(response[j].codeType);
+              $("#addKeywords").val(response[j].keywords);
+              $("#title").val(response[j].title);
+              const mode = $("#languageSelect").val();
+              editor.session.setMode(`ace/mode/${mode}`);
+              console.log(response[j].public);
+              console.log(typeof response[j].public);
+              if (response[j].public == true) {
+                console.log("TRUE!")
+                $("#privateSelect").val("1");
+              } else $("#privateSelect").val("0");
             }
           }
         });
