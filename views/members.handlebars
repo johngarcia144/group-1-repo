@@ -97,8 +97,8 @@
         <ul id="coderesults">
           {{#each result}}
 
-          <p>{{title}}
-            <button type="submit" class="devour btn btn-outline-danger" data-id="{{id}}">View</button>
+          <p>{{this.title}}
+            <button type="submit" class="devour btn btn-outline-danger" data-id="{{this.id}}">View</button>
           </p>
 
           {{/each}}
