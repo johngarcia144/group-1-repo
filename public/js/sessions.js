@@ -41,6 +41,7 @@ $(document).ready(() => {
   //searches database for language and keyword
   $("#searchcode").on("click", event => {
     event.preventDefault();
+    console.log("click");
     const searchParams = {
       codeType: $("#languageSearch").val(),
       keywords: $("#searchtag")
@@ -50,9 +51,19 @@ $(document).ready(() => {
 
     $.get(`/api/codes/search/${searchParams.keywords}`)
       // on success, run this callback
-      .then(searchParams => {
+      .then(response => {
+        console.log("thing", response);
         // log the data we found
-        location.reload();
+        $("#searchResults").empty();
+        for (let i = 0; i < response.length; i++) {
+          const a = $(
+            "<button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default btn-block'>"
+          );
+          a.addClass("snips");
+          a.attr("id", response[i].id);
+          a.text(response[i].title);
+          $("#searchResults").prepend(a);
+        }
       });
   });
 });
