@@ -1,7 +1,7 @@
 let u;
 $(document).ready(() => {
   $.get("/api/user_data").then(data => {
-    u=data.id
+    u = data.id;
   });
 
   const editor = ace.edit("editor");
@@ -61,25 +61,25 @@ $(document).ready(() => {
         // log the data we found
         $("#searchResults").empty();
         for (let i = 0; i < response.length; i++) {
-          if(response[i].public == 1){
-          const a = $(
-            "<br><button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default btn-block'>"
-          );
-          a.addClass("snips");
-          a.attr("id", response[i].id);
-          a.text(response[i].title);
-          $("#searchResults").prepend(a);
-        }
+          if (response[i].public == 1) {
+            const a = $(
+              "<br><button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default btn-block'>"
+            );
+            a.addClass("snips");
+            a.attr("id", response[i].id);
+            a.text(response[i].title);
+            $("#searchResults").prepend(a);
+          }
         }
         $("#searchResults").on("click", e => {
-          console.log(e.target.id)
+          console.log(e.target.id);
           e.preventDefault();
           for (let j = 0; j < response.length; j++) {
-            console.log(response[j].id)
-            if(e.target.id == response[j].id){
-            const codeSnip = response[j].snip;
-            editor.setValue(codeSnip);
-          }
+            console.log(response[j].id);
+            if (e.target.id == response[j].id) {
+              const codeSnip = response[j].snip;
+              editor.setValue(codeSnip);
+            }
           }
         });
       });
@@ -90,9 +90,11 @@ $(document).ready(() => {
     console.log("click");
     const searchParams = {
       userId: u,
-      codeType: $("#personalfilter").val().trim()
+      codeType: $("#personalfilter")
+        .val()
+        .trim()
     };
-    console.log(searchParams)
+    console.log(searchParams);
     $.get(`/api/user/search/${searchParams.userId}`)
       // on success, run this callback
       .then(response => {
@@ -100,29 +102,27 @@ $(document).ready(() => {
         // log the data we found
         $("#personalcontainer").empty();
         for (let i = 0; i < response.length; i++) {
-          if(response[i].codeType=== searchParams.codeType){
-              const a = $(
-            "<br><button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default btn-block'>"
-          );
-          a.addClass("snips");
-          a.attr("id", response[i].id);
-          a.text(response[i].title);
-          $("#personalcontainer").prepend(a);
+          if (response[i].codeType === searchParams.codeType) {
+            const a = $(
+              "<br><button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default btn-block'>"
+            );
+            a.addClass("snips");
+            a.attr("id", response[i].id);
+            a.text(response[i].title);
+            $("#personalcontainer").prepend(a);
           }
-        
         }
         $("#personalcontainer").on("click", e => {
-          console.log(e.target.id)
+          console.log(e.target.id);
           e.preventDefault();
           for (let j = 0; j < response.length; j++) {
-            console.log(response[j].id)
-            if(e.target.id == response[j].id){
-            const codeSnip = response[j].snip;
-            editor.setValue(codeSnip);
-          }
+            console.log(response[j].id);
+            if (e.target.id == response[j].id) {
+              const codeSnip = response[j].snip;
+              editor.setValue(codeSnip);
+            }
           }
         });
       });
   });
-
 });
