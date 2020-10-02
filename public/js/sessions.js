@@ -64,6 +64,13 @@ $(document).ready(() => {
           a.text(response[i].title);
           $("#searchResults").prepend(a);
         }
+        $("#searchResults").on("click", e => {
+          for (let j = 0; j < response.length; j++) {
+            e.preventDefault();
+            const codeSnip = response[j].snip;
+            editor.setValue(codeSnip);
+          }
+        });
       });
   });
 });
