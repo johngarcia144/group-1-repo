@@ -21,7 +21,12 @@ module.exports = app => {
         keywords: req.params.keywords
       }
     }).then(dbCodes => {
-      res.json(dbCodes);
+      res.render("members", {
+        result: dbCodes,
+        allowedProtoMethods: {
+          trim: true
+        }
+      });
     });
   });
 
