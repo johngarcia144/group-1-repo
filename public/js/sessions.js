@@ -193,7 +193,12 @@ $(document).ready(() => {
         method: "DELETE",
         url: `/api/codes/delete/${id}`
       });
-      location.reload();
+      var personaldiv = $("#personalcontainer")
+      var searchdiv = $("#searchResults")
+      personaldiv.find("button").attr("id",e.target.id).remove()
+      searchdiv.find("button").attr("id",e.target.id).remove()
+      personaldiv.find("brk").remove()
+      searchdiv.find("brk").remove()
     });
     $(".update").on("click", e => {
       e.preventDefault();
