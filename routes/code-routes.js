@@ -47,7 +47,7 @@ module.exports = app => {
     });
   });
   // PUT route for updating todos. We can get the updated todo data from req.body
-  app.put("/api/codes", (req, res) => {
+  app.put("/api/codes/update", (req, res) => {
     // Update takes in an object describing the properties we want to update, and
     // we use where to describe which objects we want to update
     db.Codes.update(
