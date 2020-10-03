@@ -77,6 +77,7 @@ $(document).ready(() => {
         }
         $(".globalresultsbtn").on("click", e => {
           e.preventDefault();
+          $(".buttonappend").empty();
           console.log(e.target.dataset.userid)
           const id = e.target.id;
           const userid = e.target.dataset.userid;
@@ -138,6 +139,7 @@ $(document).ready(() => {
         $("#personalcontainer").on("click", e => {
           console.log(e.target.id);
           e.preventDefault();
+          $(".buttonappend").empty();
           updateDeleteBtn();
           for (let j = 0; j < response.length; j++) {
             console.log(response[j].id);
