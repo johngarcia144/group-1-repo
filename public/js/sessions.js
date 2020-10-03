@@ -68,23 +68,24 @@ $(document).ready(() => {
             const a = $(
               "<br><button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default btn-block'>"
             );
-            a.addClass("snips resultsbtn");
+            a.addClass("snips globalresultsbtn");
             a.attr("id", response[i].id);
-            a.attr("userId", response[i].userId);
+            a.attr("data-userid", response[i].userId);
             a.text(response[i].title);
             $("#searchResults").prepend(a);
           }
         }
-        $("#searchResults").on("click", e => {
-          console.log(e.target.id);
-          console.log(e.target.userid);
+        $(".globalresultsbtn").on("click", e => {
           e.preventDefault();
-          if (e.target.userId == u) {
-            updateDeleteBtn();
+          console.log(e.target.dataset.userid)
+          const id = e.target.id;
+          const userid = e.target.dataset.userid;
+          if (userid == u) {
+            updateDeleteBtn(userid, id);
           }
           for (let j = 0; j < response.length; j++) {
             // console.log(response[j].id);
-            if (e.target.id == response[j].id) {
+            if (id == response[j].id) {
               const codeSnip = response[j].snip;
               editor.setValue(codeSnip);
               $("#languageSelect").val(response[j].codeType);
@@ -129,7 +130,7 @@ $(document).ready(() => {
             );
             a.addClass("snips resultsbtn");
             a.attr("id", response[i].id);
-            a.attr("userId", response[i].userId);
+            a.attr("data-userid", response[i].userId);
             a.text(response[i].title);
             $("#personalcontainer").prepend(a);
           }
@@ -149,19 +150,19 @@ $(document).ready(() => {
       });
   });
   //make delete/update buttons when userId equals user
-  function updateDeleteBtn() {
+  function updateDeleteBtn(userid, id) {
     const deletebtn = $(
-      "<br><button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default btn-block'>"
+      "<button class= 'btn'>"
     );
-    deletebtn.attr("id", e.target.id);
-    deletebtn.attr("userId", e.target.userId);
+    deletebtn.attr("id", id);
+    deletebtn.attr("userid", userid);
     deletebtn.addClass("delete");
     deletebtn.text("Delete Code Snip");
     const updatebtn = $(
-      "<br><button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default btn-block'>"
+      "<button class= 'btn'>"
     );
-    updatebtn.attr("id", e.target.id);
-    updatebtn.attr("userId", e.target.userId);
+    updatebtn.attr("id", id);
+    updatebtn.attr("userid", userid);
     updatebtn.addClass("update");
     deletebtn.text("Update Code Snip");
     $(".buttonappend").append(deletebtn, updatebtn);
