@@ -57,24 +57,24 @@ $(document).ready(() => {
     $.get(`/api/codes/search/${searchParams.keywords}`)
       // on success, run this callback
       .then(response => {
-        // console.log("thing", response);
+        console.log("thing", response);
         // log the data we found
         $("#searchResults").empty();
         for (let i = 0; i < response.length; i++) {
-          if (
-            response[i].public == 1 &&
-            response[i].codeType === searchParams.codeType
-          ) {
+          if (response[i].public == 1 && response[i].codeType === searchParams.codeType) {
             const a = $(
               "<br><button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default btn-block'>"
             );
+
             a.addClass("snips globalresultsbtn");
             a.attr("id", response[i].id);
             a.attr("data-userid", response[i].userId);
+
             a.text(response[i].title);
             $("#searchResults").prepend(a);
           }
         }
+
         $(".globalresultsbtn").on("click", e => {
           e.preventDefault();
           console.log(e.target.dataset.userid)
@@ -86,6 +86,7 @@ $(document).ready(() => {
           for (let j = 0; j < response.length; j++) {
             // console.log(response[j].id);
             if (id == response[j].id) {
+
               const codeSnip = response[j].snip;
               editor.setValue(codeSnip);
               $("#languageSelect").val(response[j].codeType);
@@ -94,13 +95,11 @@ $(document).ready(() => {
               const mode = $("#languageSelect").val();
               editor.session.setMode(`ace/mode/${mode}`);
               console.log(response[j].public);
-              // console.log(typeof response[j].public);
+              console.log(typeof response[j].public);
               if (response[j].public == true) {
-                // console.log("TRUE!");
+                console.log("TRUE!")
                 $("#privateSelect").val("1");
-              } else {
-                $("#privateSelect").val("0");
-              }
+              } else $("#privateSelect").val("0");
             }
           }
         });
@@ -128,8 +127,9 @@ $(document).ready(() => {
             const a = $(
               "<br><button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default btn-block'>"
             );
-            a.addClass("snips resultsbtn");
+            a.addClass("snips");
             a.attr("id", response[i].id);
+
             a.attr("data-userid", response[i].userId);
             a.text(response[i].title);
             $("#personalcontainer").prepend(a);
@@ -138,7 +138,6 @@ $(document).ready(() => {
         $("#personalcontainer").on("click", e => {
           console.log(e.target.id);
           e.preventDefault();
-          updateDeleteBtn();
           for (let j = 0; j < response.length; j++) {
             console.log(response[j].id);
             if (e.target.id == response[j].id) {
@@ -149,6 +148,7 @@ $(document).ready(() => {
         });
       });
   });
+
   //make delete/update buttons when userId equals user
   function updateDeleteBtn(userid, id) {
     const deletebtn = $(
@@ -167,4 +167,5 @@ $(document).ready(() => {
     deletebtn.text("Update Code Snip");
     $(".buttonappend").append(deletebtn, updatebtn);
   }
+
 });
