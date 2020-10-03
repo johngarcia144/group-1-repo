@@ -36,7 +36,7 @@ module.exports = app => {
     });
   });
 
-  app.delete("/api/codes/:id", (req, res) => {
+  app.delete("/api/codes/delete/:id", (req, res) => {
     // We just have to specify which todo we want to destroy with "where"
     db.Codes.destroy({
       where: {
