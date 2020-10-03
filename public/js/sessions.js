@@ -15,6 +15,13 @@ $(document).ready(() => {
     editor.session.setMode(`ace/mode/${mode}`);
   });
 
+  function showSaveBtn() {
+    $("#savecode").show();
+  }
+  function hideSaveBtn() {
+    $("#savecode").hide();
+  }
+
   //captures inputs for new code
   $("#savecode").on("click", event => {
     event.preventDefault();
@@ -40,10 +47,13 @@ $(document).ready(() => {
       console.log(data);
     });
   }
-
+  
   //searches database for language and keyword
   $("#searchcode").on("click", event => {
     event.preventDefault();
+    showSaveBtn();
+    $(".buttonappend").empty();
+    console.log("click");
     const searchParams = {
       codeType: $("#languageSearch").val(),
       keywords: $("#searchtag")
@@ -75,12 +85,16 @@ $(document).ready(() => {
         $(".globalresultsbtn").on("click", e => {
           e.preventDefault();
           $(".buttonappend").empty();
+          showSaveBtn();
+          console.log(e.target.dataset.userid);
           const id = e.target.id;
           const userid = e.target.dataset.userid;
           console.log("line80 dataset", e.target.dataset);
           if (userid == u) {
             updateDeleteBtn(userid, id);
+            hideSaveBtn();
           }
+
           for (let j = 0; j < response.length; j++) {
             // console.log(response[j].id);
             if (id == response[j].id) {
@@ -134,6 +148,7 @@ $(document).ready(() => {
           e.preventDefault();
           $(".buttonappend").empty();
           updateDeleteBtn();
+          hideSaveBtn();
           for (let j = 0; j < response.length; j++) {
             if (e.target.id == response[j].id) {
               const codeSnip = response[j].snip;
