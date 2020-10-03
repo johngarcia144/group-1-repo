@@ -152,8 +152,10 @@ $(document).ready(() => {
         }
         $("#personalcontainer").on("click", e => {
           e.preventDefault();
+          let id = e.target.id
+          let userid = e.target.dataset.userid;
           $(".buttonappend").empty();
-          updateDeleteBtn();
+          updateDeleteBtn(userid, id);
           hideSaveBtn();
           for (let j = 0; j < response.length; j++) {
             if (e.target.id == response[j].id) {
@@ -185,15 +187,13 @@ $(document).ready(() => {
     $(".delete").on("click", e => {
       e.preventDefault();
       console.log("click");
-      let id = e.target.id;
-      let userId = e.target.dataset.userid;
-      if (userId == u) {
-        $.ajax({
-          method: "DELETE",
-          url: "/api/codes/" + id
-        });
-        location.reload();
-      }
+      // let id = e.target.id;
+      console.log(id);
+      $.ajax({
+        method: "DELETE",
+        url: `/api/codes/delete/${id}`
+      });
+      location.reload();
     });
   }
 });
