@@ -169,7 +169,7 @@ $(document).ready(() => {
   //make delete/update buttons when userId equals user
   function updateDeleteBtn(userid, id) {
     const deletebtn = $(
-      "<button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default '>"
+      "<button class= 'btn-outline-primary mb-1 mr-2 btn d-flex justify-content-center btn-default '>"
     );
     deletebtn.attr("id", id);
     deletebtn.attr("data-userid", userid);
