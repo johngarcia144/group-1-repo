@@ -13,7 +13,6 @@ $(document).ready(() => {
     event.preventDefault();
     const mode = $("#languageSelect").val();
     editor.session.setMode(`ace/mode/${mode}`);
-    console.log("toggle");
   });
 
   function showSaveBtn() {
@@ -27,7 +26,6 @@ $(document).ready(() => {
   $("#savecode").on("click", event => {
     event.preventDefault();
     const publicStr = $("#privateSelect").val();
-    console.log("click");
     $.get("/api/user_data").then(data => {
       const Code = {
         userId: data.id,
@@ -91,6 +89,7 @@ $(document).ready(() => {
           console.log(e.target.dataset.userid);
           const id = e.target.id;
           const userid = e.target.dataset.userid;
+          console.log("line80 dataset", e.target.dataset);
           if (userid == u) {
             updateDeleteBtn(userid, id);
             hideSaveBtn();
@@ -122,18 +121,15 @@ $(document).ready(() => {
 
   $(".personalbtn").on("click", event => {
     event.preventDefault();
-    console.log("click");
     const searchParams = {
       userId: u,
       codeType: $("#personalfilter")
         .val()
         .trim()
     };
-    console.log(searchParams);
     $.get(`/api/user/search/${searchParams.userId}`)
       // on success, run this callback
       .then(response => {
-        console.log("thing", response);
         // log the data we found
         $("#personalcontainer").empty();
         for (let i = 0; i < response.length; i++) {
@@ -149,13 +145,11 @@ $(document).ready(() => {
           }
         }
         $("#personalcontainer").on("click", e => {
-          console.log(e.target.id);
           e.preventDefault();
           $(".buttonappend").empty();
           updateDeleteBtn();
           hideSaveBtn();
           for (let j = 0; j < response.length; j++) {
-            console.log(response[j].id);
             if (e.target.id == response[j].id) {
               const codeSnip = response[j].snip;
               editor.setValue(codeSnip);
@@ -170,16 +164,29 @@ $(document).ready(() => {
       "<button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default '>"
     );
     deletebtn.attr("id", id);
-    deletebtn.attr("userid", userid);
+    deletebtn.attr("data-userid", userid);
     deletebtn.addClass("delete");
     deletebtn.text("Delete Code Snip");
     const updatebtn = $(
       "<button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default '>"
     );
     updatebtn.attr("id", id);
-    updatebtn.attr("userid", userid);
+    updatebtn.attr("data-userid", userid);
     updatebtn.addClass("update");
     updatebtn.text("Update Code Snip");
     $(".buttonappend").append(deletebtn, updatebtn);
+
+    $(".delete").on("click", e => {
+      e.preventDefault();
+      console.log("click");
+      let id = e.target.id;
+      let userId = e.target.dataset.userid;
+      if (userId == u) {
+        $.ajax({
+          method: "DELETE",
+          url: "/api/codes/" + id
+        });
+      }
+    });
   }
 });
