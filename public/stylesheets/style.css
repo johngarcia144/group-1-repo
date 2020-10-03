@@ -9,7 +9,8 @@ body{
   background-size: cover;
 }
 .member-name{
-  color:whitesmoke
+  color: black;
+  text-align: center;
 }
 
 
