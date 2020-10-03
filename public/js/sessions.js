@@ -197,8 +197,8 @@ $(document).ready(() => {
       var searchdiv = $("#searchResults")
       personaldiv.find("button").attr("id",e.target.id).remove()
       searchdiv.find("button").attr("id",e.target.id).remove()
-      personaldiv.find("brk").remove()
-      searchdiv.find("brk").remove()
+      personaldiv.find("br").remove()
+      searchdiv.find("br").remove()
     });
     $(".update").on("click", e => {
       e.preventDefault();
