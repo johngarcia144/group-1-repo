@@ -47,7 +47,13 @@ $(document).ready(() => {
       console.log(data);
     });
   }
-  
+  $("#copy").on("click", event => {
+    const copyTextarea = document.querySelector("#clipboard-content");
+    copyTextarea.value = editor.getValue();
+    copyTextarea.select();
+    document.execCommand("copy");
+  });
+
   //searches database for language and keyword
   $("#searchcode").on("click", event => {
     event.preventDefault();
@@ -186,6 +192,7 @@ $(document).ready(() => {
           method: "DELETE",
           url: "/api/codes/" + id
         });
+        location.reload();
       }
     });
   }
