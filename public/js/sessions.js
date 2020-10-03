@@ -195,5 +195,21 @@ $(document).ready(() => {
         location.reload();
       }
     });
+    $(".update").on("click", e => {
+      e.preventDefault();
+      let publicStr = $("#privateSelect").val();
+      let updatedCode = {
+        id: e.target.id,
+        userId: u,
+        snip: editor.getValue(),
+        codeType: $("#languageSelect").val(),
+        title: $("#title").val().trim(),
+        keywords: $("#addKeywords").val().trim(),
+        public: parseInt(publicStr)
+      };
+      //function (updatedCode) {
+      $.ajax({ method: "PUT", url: `/api/codes/update/${id}`, data: updatedCode });
+     // };
+    });
   }
 });
