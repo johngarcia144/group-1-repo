@@ -220,6 +220,7 @@ $(document).ready(() => {
       searchdiv.find("button").attr("id",e.target.id).remove()
       personaldiv.find("br").remove()
       searchdiv.find("br").remove()
+      clearCode()
     });
     $(".update").on("click", e => {
       e.preventDefault();
