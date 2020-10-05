@@ -1,9 +1,5 @@
 let u;
 $(document).ready(() => {
-   //hide alerts
-  $("#codeSaved").hide();
-  $("#codeDeleted").hide();
-  $("#updateAlert").hide();
   $.get("/api/user_data").then(data => {
     u = data.id;
   });
