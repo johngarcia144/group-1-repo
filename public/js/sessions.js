@@ -53,11 +53,13 @@ $(document).ready(() => {
           .trim(),
         keywords: $("#addKeywords")
           .val()
-          .trim(),
+            .trim(),
         public: parseInt(publicStr)
       };
-      submitcode(Code);
-    });
+  submitcode(Code);
+  }).then(() => {
+    $("#saveModal").modal("show");
+  });
   });
   function submitcode(newcode) {
     $.post("/api/codes/new/", newcode).then(data => {
@@ -190,14 +192,14 @@ $(document).ready(() => {
   //make delete/update buttons when userId equals user
   function updateDeleteBtn(userid, id) {
     const deletebtn = $(
-      "<button class= 'btn-outline-primary mb-1 mr-2 btn d-flex justify-content-center btn-default '>"
+      "<button class= 'btn-outline-primary mb-1 mr-2 btn d-flex justify-content-center btn-default' data-toggle='modal' data-target='deleteModal' data-dismiss='modal'>"
     );
     deletebtn.attr("id", id);
     deletebtn.attr("data-userid", userid);
     deletebtn.addClass("delete delupd");
     deletebtn.text("Delete Code Snip");
     const updatebtn = $(
-      "<button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default '>"
+      "<button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default' data-toggle='modal' data-target='updateModal' data-dismiss='modal'>"
     );
     updatebtn.attr("id", id);
     updatebtn.attr("data-userid", userid);
@@ -213,6 +215,8 @@ $(document).ready(() => {
       $.ajax({
         method: "DELETE",
         url: `/api/codes/delete/${id}`
+      }).then(() =>{
+        $("#deleteModal").modal("show");
       });
       var personaldiv = $("#personalcontainer")
       var searchdiv = $("#searchResults")
@@ -234,9 +238,12 @@ $(document).ready(() => {
         keywords: $("#addKeywords").val().trim(),
         public: parseInt(publicStr)
       };
-      //function (updatedCode) {
-      $.ajax({ method: "PUT", url: `/api/codes/update/${id}`, data: updatedCode });
-     // };
+      $.ajax({ method: "PUT",
+        url: `/api/codes/update/${id}`,
+        data: updatedCode
+      }).then(() => {
+        $("#updateModal").modal("show");
+      });
     });
   }
 });
