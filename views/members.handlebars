@@ -55,6 +55,24 @@
           
             <button class="btn float-right" id="copy">Copy Code</button>
             <br><br>
+            <div class="alert alert-success" role="alert" id="codeSaved" aria-hidden="true">
+            Your code is safe with us and yes, we did save it!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="alert alert-danger" role="alert" id="codeDeleted" aria-hidden="true">
+            That code is gone forever...
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="alert alert-success" role="alert" id="updateAlert" aria-hidden="true">
+            We have sucessfully updated your code. Now, go write some more awesome code!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
             <label for="formGroupExampleInput2 mt-2">Title</label>
             <input type="text" class="form-control" id="title" placeholder="Code Title">
           </div>
@@ -113,9 +131,7 @@
           <button type="submit" id="searchcode" class="btn mb-2">Get some code</button>
         </form>
         <div id = "searchResults">
-
         </div>
-        
       </div>
     </aside>
   </div>
@@ -124,5 +140,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/members.js"></script>
 <script type="text/javascript" src="js/sessions.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js"></script>
-{{!-- <script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script> --}}

@@ -1,5 +1,9 @@
 let u;
 $(document).ready(() => {
+   //hide alerts
+  $("#codeSaved").hide();
+  $("#codeDeleted").hide();
+  $("#updateAlert").hide();
   $.get("/api/user_data").then(data => {
     u = data.id;
   });
@@ -8,6 +12,8 @@ $(document).ready(() => {
   editor.setTheme("ace/theme/tomorrow_night");
   editor.session.setMode("ace/mode/xml");
   editor.session.setUseSoftTabs(true);
+  //hide alerts
+  $("#codeSaved").hide();
   //toggles mode
   $("#languageSelect").on("change", event => {
     event.preventDefault();
@@ -53,11 +59,13 @@ $(document).ready(() => {
           .trim(),
         keywords: $("#addKeywords")
           .val()
-          .trim(),
+            .trim(),
         public: parseInt(publicStr)
       };
-      submitcode(Code);
-    });
+  submitcode(Code);
+  }).then(() => {
+    $("#codeSaved").show();
+  });
   });
   function submitcode(newcode) {
     $.post("/api/codes/new/", newcode).then(data => {
@@ -190,14 +198,14 @@ $(document).ready(() => {
   //make delete/update buttons when userId equals user
   function updateDeleteBtn(userid, id) {
     const deletebtn = $(
-      "<button class= 'btn-outline-primary mb-1 mr-2 btn d-flex justify-content-center btn-default '>"
+      "<button class= 'btn-outline-primary mb-1 mr-2 btn d-flex justify-content-center btn-default'>"
     );
     deletebtn.attr("id", id);
     deletebtn.attr("data-userid", userid);
     deletebtn.addClass("delete delupd");
     deletebtn.text("Delete Code Snip");
     const updatebtn = $(
-      "<button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default '>"
+      "<button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default'>"
     );
     updatebtn.attr("id", id);
     updatebtn.attr("data-userid", userid);
@@ -213,6 +221,8 @@ $(document).ready(() => {
       $.ajax({
         method: "DELETE",
         url: `/api/codes/delete/${id}`
+      }).then(() => {
+        $("#codeDeleted").show();
       });
       var personaldiv = $("#personalcontainer")
       var searchdiv = $("#searchResults")
@@ -234,9 +244,12 @@ $(document).ready(() => {
         keywords: $("#addKeywords").val().trim(),
         public: parseInt(publicStr)
       };
-      //function (updatedCode) {
-      $.ajax({ method: "PUT", url: `/api/codes/update/${id}`, data: updatedCode });
-     // };
+      $.ajax({ method: "PUT",
+        url: `/api/codes/update/${id}`,
+        data: updatedCode
+      }).then(() => {
+        $("#updateAlert").show();
+      });
     });
   }
 });
