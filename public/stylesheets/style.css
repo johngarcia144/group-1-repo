@@ -88,3 +88,6 @@ label {
 .delete{
   margin-right: 3rem;
 }
+#copy{
+  float: right;
+}
