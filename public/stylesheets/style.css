@@ -13,7 +13,15 @@ body{
   text-align: center;
 }
 
-
+#codeSaved {
+  display: none;
+}
+#codeDeleted {
+  display: none;
+}
+#updateAlert {
+  display: none;
+}
 #parent {
     width:100%;
     height: 420px;
