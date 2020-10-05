@@ -14,13 +14,30 @@ $(document).ready(() => {
     const mode = $("#languageSelect").val();
     editor.session.setMode(`ace/mode/${mode}`);
   });
-
+  function hideDeleteUpdateBtn(){
+    $(".delupd").hide();
+  }
   function showSaveBtn() {
     $("#savecode").show();
+    hideDeleteUpdateBtn();
   }
   function hideSaveBtn() {
     $("#savecode").hide();
   }
+
+  function clearCode(){
+    editor.setValue("");
+    $("#languageSelect").val("html");
+    $("#addKeywords").val("");
+    $("#title").val("");
+    const mode = $("#languageSelect").val();
+    showSaveBtn();
+  }
+
+  $("#create").on("click", event => {
+    event.preventDefault();
+    clearCode();
+  });
 
   //captures inputs for new code
   $("#savecode").on("click", event => {
@@ -161,6 +178,10 @@ $(document).ready(() => {
             if (e.target.id == response[j].id) {
               const codeSnip = response[j].snip;
               editor.setValue(codeSnip);
+              $("#languageSelect").val(response[j].codeType);
+              $("#addKeywords").val(response[j].keywords);
+              $("#title").val(response[j].title);
+              const mode = $("#languageSelect").val();
             }
           }
         });
@@ -173,14 +194,14 @@ $(document).ready(() => {
     );
     deletebtn.attr("id", id);
     deletebtn.attr("data-userid", userid);
-    deletebtn.addClass("delete");
+    deletebtn.addClass("delete delupd");
     deletebtn.text("Delete Code Snip");
     const updatebtn = $(
       "<button class= 'btn-outline-primary mb-1 mt-2 btn d-flex justify-content-center btn-default '>"
     );
     updatebtn.attr("id", id);
     updatebtn.attr("data-userid", userid);
-    updatebtn.addClass("update");
+    updatebtn.addClass("update delupd");
     updatebtn.text("Update Code Snip");
     $(".buttonappend").append(deletebtn, updatebtn);
 
