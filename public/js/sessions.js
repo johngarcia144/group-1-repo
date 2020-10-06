@@ -186,6 +186,7 @@ $(document).ready(() => {
               $("#addKeywords").val(response[j].keywords);
               $("#title").val(response[j].title);
               const mode = $("#languageSelect").val();
+              editor.session.setMode(`ace/mode/${mode}`);
             }
           }
         });
