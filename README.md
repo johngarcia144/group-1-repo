@@ -2,7 +2,7 @@
 
 ## Description
 <br>
-This is a site that serves as a repository for code snippets. it uses password authentication to send the user to their personal page. here they can access personal code and public code. the user can also save code snippets for future use, or update/delete them if the need arises
+QuikCode is a developer tool that allows users to easity capture code snippets for easy access. The applicaiton also serves as a public code repository for users to search and share useful snippets. QuikCode uses password authentication to send the user to their personal page where they can access both personal code and public code. Once logged in, users can save, update, copy or delete their snippets in the code database.
 
 
 ### Licenses
@@ -18,30 +18,29 @@ This is a site that serves as a repository for code snippets. it uses password a
 <br>
 * <a href="#test">Test Instructions</a>
 <br>
-* <a href="#q">Questions</a>
+* <a href="#q">Questions</a><br><br>
 
 <h3 id= "install" > Installation</h3>
 <br>
-you will need to install express-handlebars, express, passport bcryptjs, express-session, passport-local, sequelize, and  mysql2
-
+The following dependencies should be installed: <br>* express-handlebars <br>* express<br>* passport bcryptjs<br>* express-session<br>* passport-local<br>* sequelize<br>* mysql2<br><br>
 
 <h3 id = "use"> Usage Information</h3>
 <br>
 *Guidelines for use:*
 <br>
-ask one of the delelopers to use, if granted permission use how you wish
+Permission for use must be received by one of the developers. Once permission is granted, use how you wish!
 <br>
 *Guidelines for Contribution:* 
 <br>
-Ask one of the developers how you can contribute. afterwards contribute in that way
+Contact the developers with ideas how you can contribute or improve the application. If your ideas are approved, implement them in your manner of choosing.
 
-<h3 id="test"> Test Instructions</h3>
-run npm install on all the dependencies from ther make sure any and all additions work
+<h3 id="test"> Test Instructions</h3><br>
+To test the application, run npm install on all dependencies. Then, run node server.js and view in local server.
 
 
 <h2 id = "q"> Questions</h2>
 
-If you have Questions you can check out:
+If you have questions or wish to contact the developers, you can check out:
 <br>
 <a href="https://www.github.com/wuzzlefump">https://www.github.com/wuzzlefump</a><br>
 <a href="https://www.github.com/johngarcia144">https://www.github.com/johngarcia144</a><br>
