@@ -8,8 +8,6 @@ $(document).ready(() => {
   editor.setTheme("ace/theme/tomorrow_night");
   editor.session.setMode("ace/mode/xml");
   editor.session.setUseSoftTabs(true);
-  //hide alerts
-  $("#codeSaved").hide();
   //toggles mode
   $("#languageSelect").on("change", event => {
     event.preventDefault();
@@ -60,9 +58,12 @@ $(document).ready(() => {
       };
   submitcode(Code);
   }).then(() => {
-    $("#codeSaved").show();
-  });
-  });
+  $("#codeSaved").show();
+  setTimeout(() => {
+        $("#codeSaved").css("display", "none");
+  }, 2000);
+});
+});
   function submitcode(newcode) {
     $.post("/api/codes/new/", newcode).then(data => {
       console.log(data);
@@ -220,6 +221,9 @@ $(document).ready(() => {
         url: `/api/codes/delete/${id}`
       }).then(() => {
         $("#codeDeleted").show();
+        setTimeout(() => {
+          $("#codeDeleted").css("display", "none");
+        }, 2000);
       });
       var personaldiv = $("#personalcontainer")
       var searchdiv = $("#searchResults")
@@ -246,6 +250,9 @@ $(document).ready(() => {
         data: updatedCode
       }).then(() => {
         $("#updateAlert").show();
+        setTimeout(() => {
+          $("#updateAlert").css("display", "none");
+        }, 2000);
       });
     });
   }
